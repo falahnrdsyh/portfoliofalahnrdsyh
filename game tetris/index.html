@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-info">
+            <h1>TETRIS RUNGKAD</h1>
+            <div class="stats-container">
+                <div class="stats">
+                    <div class="stat-box">
+                        <p>Skor</p>
+                        <span id="score">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <p>Level</p>
+                        <span id="level">1</span>
+                    </div>
+                    <div class="stat-box">
+                        <p>Baris</p>
+                        <span id="lines">0</span>
+                    </div>
+                </div>
+                <div class="next-piece">
+                    <p>Selanjutnya</p>
+                    <canvas id="next-piece"></canvas>
+                </div>
+            </div>
+            <button id="start-btn">MULAI GAME</button>
+            <div class="high-score">
+                <p>Skor Tertinggi: <span id="high-score">0</span></p>
+            </div>
+        </div>
+        <div class="game-board">
+            <div class="game-overlay" id="game-overlay">
+                <div class="overlay-content">
+                    <h2>Game Over!</h2>
+                    <p>Skor Akhir: <span id="final-score">0</span></p>
+                    <button id="restart-btn">Main Lagi</button>
+                </div>
+            </div>
+            <canvas id="board"></canvas>
+        </div>
+        <div class="controls">
+            <button id="rotate-btn" class="glow-btn">↻</button>
+            <div class="direction-buttons">
+                <button id="left-btn" class="glow-btn">←</button>
+                <button id="down-btn" class="glow-btn">↓</button>
+                <button id="right-btn" class="glow-btn">→</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

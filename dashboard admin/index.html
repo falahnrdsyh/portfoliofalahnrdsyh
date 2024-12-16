@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Palah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <h2>Dashboard Admin</h2>
+            </div>
+            <ul>
+                <li><a href="#beranda"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#pengguna"><i class="fas fa-users"></i> Pengguna</a></li>
+                <li><a href="#produk"><i class="fas fa-box"></i> Produk</a></li>
+                <li><a href="#pesanan"><i class="fas fa-shopping-cart"></i> Pesanan</a></li>
+                <li><a href="#laporan"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+                <li><a href="#pengaturan"><i class="fas fa-cog"></i> Pengaturan</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <header>
+                <h1>Admin</h1>
+                <div class="user-info">
+                    <span>Falah</span>
+                    <img src="potopuncak.jpg" alt="Admin Avatar">
+                </div>
+            </header>
+            <main>
+                <section id="beranda">
+                    <h2>Ringkasan</h2>
+                    <div class="widget-container">
+                        <div class="widget">
+                            <h3>Total Pengguna</h3>
+                            <p>5000</p>
+                        </div>
+                        <div class="widget">
+                            <h3>Total Produk</h3>
+                            <p>500</p>
+                        </div>
+                        <div class="widget">
+                            <h3>Pesanan Hari Ini</h3>
+                            <p>89</p>
+                        </div>
+                        <div class="widget">
+                            <h3>Pendapatan Bulan Ini</h3>
+                            <p>Rp 123,456,789</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart">
+                            <h3>Penjualan Bulanan</h3>
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                        <div class="chart">
+                            <h3>Distribusi Produk</h3>
+                            <canvas id="productChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="additional-panels">
+                        <div class="panel recent-activity">
+                            <h3>Aktivitas Terbaru</h3>
+                            <ul id="activityList">
+                                <!-- Aktivitas akan diisi oleh JavaScript -->
+                            </ul>
+                        </div>
+                        <div class="panel goal-progress">
+                            <h3>Progres Tujuan</h3>
+                            <div class="progress-bar">
+                                <div class="progress" id="salesProgress" style="width: 75%;">75%</div>
+                            </div>
+                            <p>Target Penjualan: Rp 1.000.000.000</p>
+                        </div>
+                        <div class="panel top-products">
+                            <h3>Produk Terlaris</h3>
+                            <ol id="topProductsList">
+                                <!-- Produk terlaris akan diisi oleh JavaScript -->
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="pengguna" style="display: none;">
+                    <h2>Manajemen Pengguna</h2>
+                    <div class="user-list">
+                        <h3>Daftar Pengguna</h3>
+                        <table id="userTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Peran</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="produk" style="display: none;">
+                    <h2>Manajemen Produk</h2>
+                    <div class="product-list">
+                        <h3>Daftar Produk</h3>
+                        <table id="productTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nama Produk</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Penjualan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="pesanan" style="display: none;">
+                    <h2>Manajemen Pesanan</h2>
+                    <div class="order-list">
+                        <h3>Daftar Pesanan</h3>
+                        <table id="orderTable">
+                            <thead>
+                                <tr>
+                                    <th>ID Pesanan</th>
+                                    <th>Pelanggan</th>
+                                    <th>Tanggal</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data akan diisi oleh JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="laporan" style="display: none;">
+                    <h2>Laporan</h2>
+                    <div class="report-options">
+                        <button id="salesReportBtn">Laporan Penjualan</button>
+                        <button id="inventoryReportBtn">Laporan Inventaris</button>
+                        <button id="customerReportBtn">Laporan Pelanggan</button>
+                    </div>
+                    <div id="reportContent">
+                        <!-- Konten laporan akan dimuat di sini -->
+                    </div>
+                </section>
+
+                <section id="pengaturan" style="display: none;">
+                    <h2>Pengaturan</h2>
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="siteName">Nama Situs:</label>
+                            <input type="text" id="siteName" name="siteName" value="Admin Dashboard">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteEmail">Email Admin:</label>
+                            <input type="email" id="siteEmail" name="siteEmail" value="admin@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="timezone">Zona Waktu:</label>
+                            <select id="timezone" name="timezone">
+                                <option value="WIB">WIB</option>
+                                <option value="WITA">WITA</option>
+                                <option value="WIT">WIT</option>
+                            </select>
+                        </div>
+                        <button type="submit">Simpan Pengaturan</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

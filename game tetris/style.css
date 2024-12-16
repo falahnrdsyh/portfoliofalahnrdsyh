@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #00ff00;
+    --primary-glow: rgba(0, 255, 0, 0.5);
+    --bg-color: #1a1a1a;
+    --board-bg: #000;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--primary-glow); }
+    50% { box-shadow: 0 0 20px var(--primary-glow); }
+    100% { box-shadow: 0 0 5px var(--primary-glow); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.game-info {
+    text-align: center;
+    width: 100%;
+}
+
+.stats-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid var(--primary-color);
+    animation: glow 2s infinite;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.stat-box p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.stat-box span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.next-piece {
+    margin-top: 15px;
+}
+
+.next-piece canvas {
+    background-color: var(--board-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-glow);
+    animation: slideIn 0.5s ease-out;
+}
+
+#start-btn, #restart-btn {
+    margin-top: 15px;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#start-btn:hover, #restart-btn:hover {
+    background-color: #00cc00;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.game-board {
+    position: relative;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 20px var(--primary-glow);
+    overflow: hidden;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.overlay-content {
+    text-align: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.overlay-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+canvas {
+    background-color: var(--board-bg);
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.direction-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.glow-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background-color: rgba(0, 255, 0, 0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.glow-btn:active {
+    background-color: rgba(0, 255, 0, 0.3);
+    transform: scale(0.95);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.high-score {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    .glow-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .stats-container {
+        padding: 10px;
+    }
+    
+    .stat-box {
+        min-width: 60px;
+        padding: 8px;
+    }
+}
